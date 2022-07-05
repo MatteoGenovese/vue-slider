@@ -5,48 +5,57 @@ var app = new Vue({
                 image: 'img/01.jpg',
                 title: 'Svezia',
                 text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+                activeObject: true,
             },
             {
                 image: 'img/02.jpg',
                 title: 'Svizzera',
                 text: 'Lorem ipsum.',
+                activeObject: false,
             },
             {
                 image: 'img/03.jpg',
                 title: 'Gran Bretagna',
                 text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+                activeObject: false,
+
             },
             {
                 image: 'img/04.jpg',
                 title: 'Germania',
                 text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam.',
+                activeObject: false,
             },
             {
                 image: 'img/05.jpg',
                 title: 'Paradise',
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
+                activeObject: false,
             }
         ],
-        index: 0,
-
-
-
+        mainIndex: 0,
 
     },
     methods: {
         nextButtonClicked: function() {
-            this.index++;
-            if (this.index === this.slides.length) {
-                this.index = 0
+            this.mainIndex++;
+            if (this.mainIndex === this.slides.length) {
+                this.mainIndex = 0
             }
 
         },
         prevButtonClicked: function() {
-            this.index--;
-            if (this.index === -1) {
-                this.index = this.slides.length - 1;
+            this.mainIndex--;
+            if (this.mainIndex === -1) {
+                this.mainIndex = this.slides.length - 1;
             }
+        },
 
+        clickOnThumbnail: function(indexPassed) {
+            this.mainIndex = indexPassed;
         }
-    }
+    },
+    updated() {
+        console.log("qualcosa è cambiato");
+    },
 });
