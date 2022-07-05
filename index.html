@@ -32,7 +32,7 @@
                     <div class="prev" @click="prevButtonClicked()"></div>
                     <div class="next" @click="nextButtonClicked()"></div>
                     <div class="thumb" v-for="(slide, index) in slides" :class="(slides[mainIndex].title===slide.title) ? `active` : ``">
-                        <a @click="clickOnThumbnail(index)">
+                        <a @click="clickOnThumbnail(index)" @mouseover="stopInterval()" @mouseleave="continueInterval()">
                             <img :src="slide.image" :alt="slide.title" />
                         </a>
                     </div>

@@ -34,6 +34,8 @@ var app = new Vue({
             }
         ],
         mainIndex: 0,
+        hover: true,
+        clock: 0,
 
     },
     methods: {
@@ -53,9 +55,21 @@ var app = new Vue({
 
         clickOnThumbnail: function(indexPassed) {
             this.mainIndex = indexPassed;
+        },
+
+        stopInterval: function() {
+            clearInterval(this.clock);
+        },
+        continueInterval: function() {
+            this.clock = setInterval(this.nextButtonClicked, 3000);
         }
+
+
     },
     updated() {
         console.log("qualcosa è cambiato");
     },
+    created() {
+        this.continueInterval();
+    }
 });
