@@ -35,10 +35,17 @@ var app = new Vue({
     },
     methods: {
         nextButtonClicked: function() {
-            this.index
+            this.index++;
+            if (this.index === this.slides.length) {
+                this.index = 0
+            }
 
         },
         prevButtonClicked: function() {
+            this.index--;
+            if (this.index === -1) {
+                this.index = this.slides.length - 1;
+            }
 
         }
     }
