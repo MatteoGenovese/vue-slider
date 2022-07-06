@@ -35,7 +35,7 @@ var app = new Vue({
         ],
         mainIndex: 0,
         hover: true,
-        clock: 0,
+        clock: null,
 
     },
     methods: {
@@ -59,9 +59,15 @@ var app = new Vue({
 
         stopInterval: function() {
             clearInterval(this.clock);
+            this.clock = null;
         },
         continueInterval: function() {
-            this.clock = setInterval(this.nextButtonClicked, 3000);
+            if (this.clock === null) {
+                this.clock = setInterval(this.nextButtonClicked, 1500);
+                //this.clock = setInterval(() = {
+                // this.nextButtonClicked();
+                // }, 1000);
+            }
         }
 
 
